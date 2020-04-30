@@ -22,7 +22,9 @@ class InterviewsController < ApplicationController
     @interviews = current_user.interviews.includes(:user, :interviewer)
   end
 
-  def edit; end
+  def edit
+    @interview = current_user.interviews.find_by(id: params[:id])
+  end
 
   def update; end
 

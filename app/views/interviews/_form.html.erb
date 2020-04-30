@@ -1,0 +1,15 @@
+<%= form_with model: @interview, url: yield(:url), local: true do |f| %>
+  <div class="field">
+    <%= f.label :interviewer_id %><br />
+    <%= f.collection_select(:interviewer_id, User.interviewer, :id, :name ) %>
+  </div>
+
+  <div class="field">
+    <%= f.label :schedule %><br />
+    <%= f.datetime_select :schedule, minute_step: 15, value: yield(:time) %>
+  </div>
+
+  <div class="actions">
+    <%= f.submit yield(:submit_label) %>
+  </div>
+<% end %>

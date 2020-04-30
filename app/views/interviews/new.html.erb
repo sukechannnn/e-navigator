@@ -1,17 +1,7 @@
+<% provide(:url, user_interviews_path(current_user)) %>
+<% provide(:submit_label, '予約') %>
+<% provide(:time, Time.now) %>
+
 <h2>面接予約</h2>
 
-<%= form_with model: @interview, url: user_interviews_path(current_user), local: true do |f| %>
-  <div class="field">
-    <%= f.label :interviewer_id %><br />
-    <%= f.collection_select(:interviewer_id, User.interviewer, :id, :name) %>
-  </div>
-
-  <div class="field">
-    <%= f.label :schedule %><br />
-    <%= f.datetime_select :schedule, minute_step: 15, value: Time.now %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "予約" %>
-  </div>
-<% end %>
+<%= render 'form' %>

@@ -68,6 +68,19 @@ RSpec.describe InterviewsController, type: :request do
     end
   end
 
+  describe 'PATCH #update' do
+    subject { patch user_interview_path(user, interview), params: { interview: params }; response }
+
+    context 'as an authenticated user' do
+      before { sign_in user }
+      it { is_expected.to have_http_status '302' }
+    end
+
+    context 'as an unauthorized' do
+      it { is_expected.to have_http_status '302' }
+    end
+  end
+
   describe 'DELETE #destroy' do
     subject { delete user_interview_path(user, interview); response }
 

@@ -1,2 +1,6 @@
-<h1>Interviews#edit</h1>
-<p>Find me in app/views/interviews/edit.html.erb</p>
+<% provide(:url, user_interview_path(current_user, @interview)) %>
+<% provide(:submit_label, '変更') %>
+<% provide(:time, @interview.schedule) %>
+<h2>面接予約変更</h2>
+
+<%= render 'form' %>
